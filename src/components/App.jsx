@@ -13,31 +13,10 @@ function App() {
   }
 
 
-  //function receives nodes+edges from Submit.jsx
-  function createNodes(nodes, edges) {
-    const allNodes = [];
-    const allEdges = [];
-
-    const nodeData = nodes;
-    const edgeData = edges;
-
-    nodeData.forEach(function (n) {
-      allNodes.push({
-        "name": n[0],
-        "xpos": n[1].layout.pos[0],
-        "ypos": n[1].layout.pos[0],
-        "text": n[1].layout.text
-      })
-    })
-
-    
-  }
-
   return (
     <div>
       <Header />
       <Submit
-        onSubm={createNodes}
         onAdd={addCyto}
       />
       {cyto.map((cytoItem, index) => {

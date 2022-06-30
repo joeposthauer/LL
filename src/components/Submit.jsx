@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 //import { nodeModuleNameResolver } from "typescript";
 
@@ -9,8 +9,6 @@ function Submit(props) {
         nodes: [],
         edges: []
     })
-
-    
 
 
     const onSubmit = (d) => {
@@ -25,17 +23,16 @@ function Submit(props) {
 
 
             //Create nodes and edge arrays for node creation with cyto
-            
+
             const nodesJson = parsedFile.display.nodes;
             const edgesJson = parsedFile.display.edges[0].connect;
-            Object.entries(nodesJson).forEach((entry)=> {
+            Object.entries(nodesJson).forEach((entry) => {
                 data.nodes.push(entry);
             })
-            Object.entries(edgesJson).forEach((entry)=> {
+            Object.entries(edgesJson).forEach((entry) => {
                 data.edges.push(entry);
             })
 
-            props.onSubm(data.nodes, data.edges);
             props.onAdd(data);
 
         }
@@ -45,10 +42,14 @@ function Submit(props) {
 
     return (
         //form for inputting JSON file
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register("userFile")} type="file" />
-            <button >Submit</button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input className="file-btn" {...register("userFile")} type="file" />
+                <button className="submit-btn">Submit</button>
+            </form>
+            <hr></hr>
+        </div>
+
     )
 
 }
